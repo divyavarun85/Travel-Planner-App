@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Weather Journal</title>
+<link href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.scss">
+
+</head>
+ <body>
+<div id = "app">
+                        <!--Displaying title-->
+        <header id = "header"class ="box"><!--no need of box -Just to know the border-->
+            <div class ="holder headline">
+              Weather Journal App
+            </div>
+        </header>
+          <!--Displaying zip code and "How are you feeling" fields-->
+        <div id = "sidebar-left" class ="box">
+            <form action="" method="get" class="form">
+              <div class="form">
+                <label for="zip">Enter Zip code</label>
+                <input type="number" id="zip",placeholder ="Enter your zip code here" >
+              </div>
+              <div class="form">
+                <label for="feelings">How are you feeling today?</label>
+                <textarea class= "myInput" id="feelings" placeholder="Enter your feelings here" rows="9" cols="50"></textarea>
+              </div>
+            </form>
+        </div>
+         <!-- "entry holder div for date,temperature and content-->
+       
+        <div id = "sidebar-right" class ="box">
+          <div class = "title">Most Recent Entry</div>
+
+              <div id ="entryHolder">
+                <div> <label for="date">Date :</label>
+                      <input type="date" id="mydate", placeholder ="Date"></div>
+                <div><label for = "temp">Temperature:</label>
+                      <input type="number" id ="temp" placeholder="Temperature"></div> 
+                <div><label for ="user response">Enter your Openion Here: </label>
+                      <textarea class= "myInput" id ="iresponse" placeholder="Enter your response here" rows="9" cols="50"></textarea></div>
+              </div>
+              <button id="generate" type = "button"> Generate </button>
+
+        </div>
+      <footer id = "footer" class ="box">
+         <section id ="section">
+          <table>
+              <tr><td>  <label for ="display-temper">Current Temperature</label></td>
+              <td><div id = "display-tempe"></div></td></tr>
+
+              <tr><td><label for ="display-Feels">Feels like</label></td>
+              <td> <div id ="display_feelslike"></div></td></tr>
+
+              <tr><td> <label for ="display-dat">Date Entered:</date></td>
+              <td>  <div id ="display-date"></div></td></tr>
+              
+              <tr> <td><label for ="user-inpu">User Input : </label></td>
+              <td>  <div id ="user-input"></div></td></tr>
+          </table>
+        </section>
+  
+    </footer>
+ </div>
+ <script type="text/javascript" src="../../../dist/main.js"></script>
+
+</body>
+</html>
