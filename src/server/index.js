@@ -1,3 +1,4 @@
+
 var path = require('path')
 
 /* Fetchn */
@@ -37,4 +38,27 @@ app.get('/', function (req, res) {
     // res.sendFile('dist/index.html')
     res.sendFile('dist/index.html')
 })
+
+
+
+function getDetails(req,res){
+    res.send('hello');
+}
+
+app.get('/travel',getDetails)
+
+const fetchedDataArray =[];
+function postDate(req,res){
+    console.log(req.body);
+    newDetailsEntry = {
+        Date :req.body.Date,
+     }
+   
+    fetchedDataArray.push(newDetailsEntry);
+    res.send(200);
+    console.log(fetchedDataArray);
+}
+
+app.post('/travel',postDate)
+
 

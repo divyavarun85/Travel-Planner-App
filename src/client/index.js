@@ -1,5 +1,4 @@
-import {performaction} from '../client/js/app1'
+import {performaction} from '../client/js/app'
+import './styles/style.scss'
 
 
-
-alert("It went to index.js")
