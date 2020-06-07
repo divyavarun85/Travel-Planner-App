@@ -25,7 +25,7 @@ app.use(express.static('dist'));
 
 
 // Setup Server
-const port = 8080;
+const port = 8081;
 app.listen(port,listening);
 function listening(){
    
@@ -40,23 +40,26 @@ app.get('/', function (req, res) {
 })
 
 
-
-function getDetails(req,res){
-    res.send('hello');
-}
-
-app.get('/travel',getDetails)
+ 
+ /* Date :req.body.Date;
+    const calDate = new Date(Date);
+    console.log(calDate);
+    var today = new Date();
+    console.log(today);*/
 
 const fetchedDataArray =[];
 function postDate(req,res){
-    console.log(req.body);
-    newDetailsEntry = {
+  /*  console.log(req.body);
+    const Date =req.body.date;
+    const todayDate = new*/
+   newDetailsEntry = {
         Date :req.body.Date,
      }
    
     fetchedDataArray.push(newDetailsEntry);
-    res.send(200);
+   
     console.log(fetchedDataArray);
+    res.sendStatus(200)
 }
 
 app.post('/travel',postDate)
