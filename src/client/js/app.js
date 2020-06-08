@@ -66,48 +66,43 @@ const getWeatherDetails = async(longt,latd)=>{
  alert(diffDays + " days");
 
  /**Less the 7 days */
- if(diffDays<=7){
-alert('hey its less than 7');
-const getweatherbitresponse = await fetch(weatherbitCurrentweatherURL+"?lat="+latd+"&lon="+longt+"&key="+weatherbitAPI);   
+ if(diffDays<16) {
+  alert('less than 16');
+const getweatherbitresponse = await fetch(weatherbitbaseURL+"?key="+weatherbitAPI+"&lat="+latd+"&lon="+longt);    
   try{
+   
       const getdetData = await getweatherbitresponse.json();
-      console.log(getdetData);
-      document.getElementById("mxtemper").innerHTML = getdetData.data[0].max_temp;
-      document.getElementById("mintemper").innerHTML = getdetData.data[0].min_temp;
-      document.getElementById("precip").innerHTML = getdetData.data[0].precip;
-      document.getElementById("snow").innerHTML = getdetData.data[0].snow;
-      document.getElementById("mxtemper").innerHTML = getdetData.data[0].app_max_temp;
-    }
+   
+      console.log(getdetData.data[diffDays]);
+      document.getElementById("mxtemper").innerHTML = getdetData.data[diffDays].max_temp;
+      document.getElementById("mintemper").innerHTML = getdetData.data[diffDays].min_temp;
+      document.getElementById("precip").innerHTML = getdetData.data[diffDays].precip;
+      document.getElementById("snow").innerHTML = getdetData.data[diffDays].snow;
+      document.getElementById("mxtemper").innerHTML = getdetData.data[diffDays].app_max_temp;
+      return
+      
+   }
     catch(error){
-      console.log("i am error", error);
-    }
-      } 
-/**between 7 and 16 days */
-      else if (diffDays>7 && diffDays <=16) {
-        alert('more than 7');
-      const getweatherbitresponse = await fetch(weatherbitbaseURL+"?key="+weatherbitAPI+"&lat="+latd+"&lon="+longt);    
-        try{
-         
-            const getdetData = await getweatherbitresponse.json();
-         
-            console.log(getdetData.data[diffDays]);
-            document.getElementById("mxtemper").innerHTML = getdetData.data[diffDays].max_temp;
-            document.getElementById("mintemper").innerHTML = getdetData.data[diffDays].min_temp;
-            document.getElementById("precip").innerHTML = getdetData.data[diffDays].precip;
-            document.getElementById("snow").innerHTML = getdetData.data[diffDays].snow;
-            document.getElementById("mxtemper").innerHTML = getdetData.data[diffDays].app_max_temp;
-            return
-            
-         }
-          catch(error){
-          console.log("i am error", error);
-        }
-     }
+    console.log("i am error", error);
+  }
+}
      /** More than 16 days */
-     else if(diffDays>16){
-       alert('Weather is inaccurate if the date entered is more than 16 days from now');
-
-     }
+     else if(diffDays>=16){
+      alert('more than 16');
+      const getweatherbitresponse = await fetch(weatherbitCurrentweatherURL+"?lat="+latd+"&lon="+longt+"&key="+weatherbitAPI);   
+        try{
+            const getdetData = await getweatherbitresponse.json();
+            console.log(getdetData);
+            document.getElementById("mxtemper").innerHTML = getdetData.data[0].app_temp;
+            document.getElementById("mintemper").innerHTML = getdetData.data[0].min_temp;
+            document.getElementById("precip").innerHTML = getdetData.data[0].precip;
+            document.getElementById("snow").innerHTML = getdetData.data[0].snow;
+            document.getElementById("mxtemper").innerHTML = getdetData.data[0].app_max_temp;
+          }
+          catch(error){
+            console.log("i am error", error);
+          }
+            } 
    
     /* document.getElementById("latitude").innerHTML = getdetData.geonames[0].lat;
      document.getElementById("latitude").innerHTML = getdetData.geonames[0].lat;
