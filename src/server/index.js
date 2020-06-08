@@ -49,9 +49,7 @@ app.get('/', function (req, res) {
 
 const fetchedDataArray =[];
 function postDate(req,res){
-  /*  console.log(req.body);
-    const Date =req.body.date;
-    const todayDate = new*/
+  
    newDetailsEntry = {
         Date :req.body.Date,
      }
