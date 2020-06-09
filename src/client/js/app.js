@@ -1,18 +1,18 @@
 var today = new Date();
-
+/**Geonames API credentials */
 let username ='divyavarun';
 let geonamesbaseURL ="http://api.geonames.org/searchJSON?";
 
+/**weatherbit API credentials */
 let weatherbitCurrentweatherURL ="http://api.weatherbit.io/v2.0/current";
 let weatherbitbaseURL ="http://api.weatherbit.io/v2.0/forecast/daily";
-
 let weatherbitAPI = '1192a6cfe0c3400eafe550b3a620c0ff';
 
-
+/**pixabay API credentials */
 let pixabaybaseURL = "https://pixabay.com/api/";
 let pixabayAPI = "16947604-4a7a0accc8b9117d01d2ecc60";
 
-
+/**Event handler for Generate button */
 document.getElementById('generate').addEventListener('click',performaction);
 
 
@@ -69,15 +69,13 @@ const getWeatherDetails = async(longt,latd)=>{
     const date2 = new Date(dateToday);
     const diffTime = Math.abs(date2 - date1);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
-    alert(diffDays + " days");
-
+  
     /**if date enetered is less the 16 days */
     if(diffDays<16) {
-      alert('less than 16');
-      const getweatherbitresponse = await fetch(weatherbitbaseURL+"?key="+weatherbitAPI+"&lat="+latd+"&lon="+longt);    
+       const getweatherbitresponse = await fetch(weatherbitbaseURL+"?key="+weatherbitAPI+"&lat="+latd+"&lon="+longt);    
         try{
             const getdetData = await getweatherbitresponse.json();
-            console.log(getdetData.data[diffDays]);
+            //console.log(getdetData.data[diffDays]);
             document.getElementById("temper").innerHTML = getdetData.data[diffDays].temp;
             document.getElementById("precip").innerHTML = getdetData.data[diffDays].precip;
             document.getElementById("snow").innerHTML = getdetData.data[diffDays].snow;
@@ -89,11 +87,11 @@ const getWeatherDetails = async(longt,latd)=>{
       }
      /** If date entered is more than 16 days */
      else if(diffDays>=16){
-      alert('more than 16');
+       alert("The date you entered is more than 16 days from today which will be inaccurate.Here is the current weather forcast")
       const getweatherbitresponse = await fetch(weatherbitCurrentweatherURL+"?lat="+latd+"&lon="+longt+"&key="+weatherbitAPI);   
         try{
             const getdetData = await getweatherbitresponse.json();
-            console.log(getdetData);
+           // console.log(getdetData);
             document.getElementById("temper").innerHTML = getdetData.data[0].app_temp;
             document.getElementById("precip").innerHTML = getdetData.data[0].precip;
             document.getElementById("snow").innerHTML = getdetData.data[0].snow;
@@ -117,7 +115,7 @@ const getImage = async(city)=>{
         const getimageData = await getimageresponse.json();
         console.log(getimageData);
         if (getimageData.hits.length == 0){
-          alert("Image unavailable");
+          alert("Image of "+city+" is unavailable");
           return;
         }else{
         const imageURL =getimageData.hits[0].largeImageURL;
@@ -134,16 +132,12 @@ const getImage = async(city)=>{
     
   }
  
-
-
-
-
-
 function performaction(){
  const city = document.getElementById("city").value;
  const date = document.getElementById("mydate").value;
- if(date == ""){
-   alert('please enter date');
+ 
+ if(date == "" || city ==""){
+   alert('please enter date & City');
    return;
  }else{
    getCordinates(city).then(function(){
