@@ -116,15 +116,22 @@ const getImage = async(city)=>{
       try{
         const getimageData = await getimageresponse.json();
         console.log(getimageData);
-        const imageURL =getimageData.hits[0].previewURL;
-        document.getElementById("image").innerHTML = "<img src ="+imageURL+">";
-      /* document.getElementById("longitude").innerHTML = getData.geonames[0].lng;  
-       document.getElementById("country").innerHTML = getData.geonames[0].countryName;    */
+        if (getimageData.hits.length == 0){
+          alert("Image unavailable");
+          return;
+        }else{
+        const imageURL =getimageData.hits[0].largeImageURL;
+       
+        document.getElementById("image").innerHTML = "<img src ="+imageURL+" width = 50%>";
+        
+      
       }
+    }
      catch(error){
      console.log("i am error", error);
      }
     }
+    
   }
  
 
@@ -135,6 +142,10 @@ const getImage = async(city)=>{
 function performaction(){
  const city = document.getElementById("city").value;
  const date = document.getElementById("mydate").value;
+ if(date == ""){
+   alert('please enter date');
+   return;
+ }else{
    getCordinates(city).then(function(){
     postData('http://localhost:8081/travel',{Date:date});
     getImage(city);
@@ -144,6 +155,7 @@ function performaction(){
    getWeatherDetails(long,lat)
 
   })
+}
 }
 export { performaction,
   getCordinates,
