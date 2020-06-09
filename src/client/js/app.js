@@ -8,6 +8,11 @@ let weatherbitbaseURL ="http://api.weatherbit.io/v2.0/forecast/daily";
 
 let weatherbitAPI = '1192a6cfe0c3400eafe550b3a620c0ff';
 
+
+let pixabaybaseURL = "https://pixabay.com/api/";
+let pixabayAPI = "16947604-4a7a0accc8b9117d01d2ecc60";
+
+
 document.getElementById('generate').addEventListener('click',performaction);
 
 
@@ -54,62 +59,77 @@ const postData = async ( url = '', data = {})=>{
 }
 
 
-
+/** GEtting data from weatherbit*/
 const getWeatherDetails = async(longt,latd)=>{
-  const Edate = document.getElementById("mydate").value;
-  const dateToday = new Date().toISOString().slice(0,10);
- 
- const date1 = new Date(Edate);
- const date2 = new Date(dateToday);
- const diffTime = Math.abs(date2 - date1);
- const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
- alert(diffDays + " days");
+    const Edate = document.getElementById("mydate").value;
+    const dateToday = new Date().toISOString().slice(0,10);
 
- /**Less the 7 days */
- if(diffDays<16) {
-  alert('less than 16');
-const getweatherbitresponse = await fetch(weatherbitbaseURL+"?key="+weatherbitAPI+"&lat="+latd+"&lon="+longt);    
-  try{
-   
-      const getdetData = await getweatherbitresponse.json();
-   
-      console.log(getdetData.data[diffDays]);
-      document.getElementById("mxtemper").innerHTML = getdetData.data[diffDays].max_temp;
-      document.getElementById("mintemper").innerHTML = getdetData.data[diffDays].min_temp;
-      document.getElementById("precip").innerHTML = getdetData.data[diffDays].precip;
-      document.getElementById("snow").innerHTML = getdetData.data[diffDays].snow;
-      document.getElementById("mxtemper").innerHTML = getdetData.data[diffDays].app_max_temp;
-      return
-      
-   }
-    catch(error){
-    console.log("i am error", error);
-  }
-}
-     /** More than 16 days */
+  /**Calculating days between user entered date and current date */
+    const date1 = new Date(Edate);
+    const date2 = new Date(dateToday);
+    const diffTime = Math.abs(date2 - date1);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+    alert(diffDays + " days");
+
+    /**if date enetered is less the 16 days */
+    if(diffDays<16) {
+      alert('less than 16');
+      const getweatherbitresponse = await fetch(weatherbitbaseURL+"?key="+weatherbitAPI+"&lat="+latd+"&lon="+longt);    
+        try{
+            const getdetData = await getweatherbitresponse.json();
+            console.log(getdetData.data[diffDays]);
+            document.getElementById("temper").innerHTML = getdetData.data[diffDays].temp;
+            document.getElementById("precip").innerHTML = getdetData.data[diffDays].precip;
+            document.getElementById("snow").innerHTML = getdetData.data[diffDays].snow;
+            return
+        }
+          catch(error){
+            console.log("i am error", error);
+        }
+      }
+     /** If date entered is more than 16 days */
      else if(diffDays>=16){
       alert('more than 16');
       const getweatherbitresponse = await fetch(weatherbitCurrentweatherURL+"?lat="+latd+"&lon="+longt+"&key="+weatherbitAPI);   
         try{
             const getdetData = await getweatherbitresponse.json();
             console.log(getdetData);
-            document.getElementById("mxtemper").innerHTML = getdetData.data[0].app_temp;
-            document.getElementById("mintemper").innerHTML = getdetData.data[0].min_temp;
+            document.getElementById("temper").innerHTML = getdetData.data[0].app_temp;
             document.getElementById("precip").innerHTML = getdetData.data[0].precip;
             document.getElementById("snow").innerHTML = getdetData.data[0].snow;
-            document.getElementById("mxtemper").innerHTML = getdetData.data[0].app_max_temp;
-          }
+           }
           catch(error){
             console.log("i am error", error);
-          }
-            } 
-   
-    /* document.getElementById("latitude").innerHTML = getdetData.geonames[0].lat;
-     document.getElementById("latitude").innerHTML = getdetData.geonames[0].lat;
-     document.getElementById("latitude").innerHTML = getdetData.geonames[0].lat;*/
-     
-
+            }
+        } 
+ 
     }
+
+/**Get Image */
+const getImage = async(city)=>{
+  if(city ==""){
+    alert("please enter city");
+     return;
+   }else{
+  const getimageresponse = await fetch(pixabaybaseURL+"?key="+pixabayAPI+"&q="+city+"&image_type=photo");    
+ 
+      try{
+        const getimageData = await getimageresponse.json();
+        console.log(getimageData);
+        const imageURL =getimageData.hits[0].previewURL;
+        document.getElementById("image").innerHTML = "<img src ="+imageURL+">";
+      /* document.getElementById("longitude").innerHTML = getData.geonames[0].lng;  
+       document.getElementById("country").innerHTML = getData.geonames[0].countryName;    */
+      }
+     catch(error){
+     console.log("i am error", error);
+     }
+    }
+  }
+ 
+
+
+
 
 
 function performaction(){
@@ -117,7 +137,7 @@ function performaction(){
  const date = document.getElementById("mydate").value;
    getCordinates(city).then(function(){
     postData('http://localhost:8081/travel',{Date:date});
-    
+    getImage(city);
   }).then(function(){
     const long = document.getElementById("longitude").innerHTML;
     const lat = document.getElementById("latitude").innerHTML;
