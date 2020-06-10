@@ -13,8 +13,9 @@ let pixabaybaseURL = "https://pixabay.com/api/";
 let pixabayAPI = "16947604-4a7a0accc8b9117d01d2ecc60";
 
 /**Event handler for Generate button */
+document.addEventListener('DOMContentLoaded', function () {
 document.getElementById('generate').addEventListener('click',performaction);
-
+});
 
 /**Get weather details from weather API */
 const getCordinates = async(city)=>{
@@ -35,6 +36,7 @@ const getCordinates = async(city)=>{
     console.log("i am error", error);
     }
    }
+   
  }
 
 /*POST DATA (user entered only) to server*/
@@ -140,7 +142,7 @@ function performaction(){
    alert('please enter date & City');
    return;
  }else{
-   getCordinates(city).then(function(){
+   getCordinates(city).then(function(country){
     postData('http://localhost:8081/travel',{Date:date});
     getImage(city);
   }).then(function(){

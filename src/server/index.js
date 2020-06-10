@@ -35,7 +35,7 @@ console.log('Express listening on port', this.address().port);
 
 
 app.get('/', function (req, res) {
-    // res.sendFile('dist/index.html')
+  
     res.sendFile('dist/index.html')
 })
 
@@ -49,7 +49,7 @@ app.get('/', function (req, res) {
 
 const fetchedDataArray =[];
 function postDate(req,res){
-  
+  console.log(req.body);
    newDetailsEntry = {
         Date :req.body.Date,
      }
@@ -63,3 +63,4 @@ function postDate(req,res){
 app.post('/travel',postDate)
 
 
+module.exports = app

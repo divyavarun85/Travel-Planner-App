@@ -54,6 +54,8 @@ display: flex;
 background-color: lightskyblue;
 align-items: center;
 width:100%;
+flex-wrap: wrap;
+justify-content: space-between;
 }
 
 #temp{
