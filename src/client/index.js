@@ -1,6 +1,7 @@
 import {performaction,
     getCordinates,
-    postData
+    postData,
+    getWeatherDetails
 } from '../client/js/app'
 
 import './styles/style.scss'

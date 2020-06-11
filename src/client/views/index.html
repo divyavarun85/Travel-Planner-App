@@ -9,13 +9,13 @@
 </head>
  <body>
 <div id = "app">
-                        <!--Displaying title-->
-        <header id = "header"class ="box"><!--no need of box -Just to know the border-->
+                       
+        <header id = "header"class ="box">
             <div class ="holder headline">
-              Weather Journal App
+             Travel Plan App
             </div>
         </header>
-          <!--Displaying zip code and "How are you feeling" fields-->
+          <!--Displaying city-->
         <div id = "sidebar-left" class ="box">
             <form action="" method="get" class="form">
               <div class="form">
@@ -24,24 +24,27 @@
               </div>
             </form>
         </div>
-         <!-- "entry holder div for date,temperature and content-->
+         <!-- "entry holder div for start date and end date -->
        
         <div id = "sidebar-right" class ="box">
       
               <div id ="entryHolder">
-                <div> <label for="date">Date :</label>
-                      <input type="date" id="mydate", placeholder ="Date"></div>
-               <!-- <div><label for = "temp">Temperature:</label>
-                      <input type="number" id ="temp" placeholder="Temperature"></div> 
-                <div><label for ="user response">Enter your Openion Here: </label>
-                      <textarea class= "myInput" id ="iresponse" placeholder="Enter your response here" rows="9" cols="50"></textarea></div>-->
-              </div>
-              <button id="generate" type = "button"> Generate </button>
-
+                <div> <label for="date">Start Date :</label>
+                      <input type="date" id="mydate", placeholder ="Start date"></div>
+                      <div> <label for="End date">End Date :</label>
+                        <input type="date" id="myenddate", placeholder ="End date"></div>
+             </div>
+              <!--generate button-->
+            <button id="generate" type = "button"> Generate </button>
         </div>
+
+        <!-- displaying total trip days,latitude,longitude,country,temperature,precipitation,snow and Image-->
       <footer id = "footer" class ="box">
          <section id ="section">
           <table>
+              <tr><td>  <label for ="totaltripdays">Total days of Trip:</label></td>
+              <td><div id = "totrdy"></div></td></tr>
+
               <tr><td>  <label for ="latitude">Latitude:</label></td>
               <td><div id = "latitude"></div></td></tr>
 

@@ -39,28 +39,18 @@ app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
 })
 
-
- 
- /* Date :req.body.Date;
-    const calDate = new Date(Date);
-    console.log(calDate);
-    var today = new Date();
-    console.log(today);*/
-
+/**Saving date in an Array */
 const fetchedDataArray =[];
 function postDate(req,res){
   console.log(req.body);
    newDetailsEntry = {
         Date :req.body.Date,
      }
-   
     fetchedDataArray.push(newDetailsEntry);
-   
     console.log(fetchedDataArray);
     res.sendStatus(200)
 }
 
 app.post('/travel',postDate)
-
 
 module.exports = app
