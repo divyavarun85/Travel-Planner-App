@@ -99,15 +99,21 @@ plugins: [
 
 1)Install webapack dev server
 
-	```npm i -D webpack-dev-sever```
+```
+     npm i -D webpack-dev-sever
+```
 2)Edit the build-dev npm script to use webpack-dev-server
 
-	```webpack-dev-server --config webpack.dev.js --open```
+```
+webpack-dev-server --config webpack.dev.js --open
+```
 
 ##### Sass Loader set up
 
 
-```npm i -D style-loader node-sass css-loader sass-loader```
+```
+npm i -D style-loader node-sass css-loader sass-loader
+```
 Add this test case to the rules array in your dev webpack config.
 ```
 {
