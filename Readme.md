@@ -14,14 +14,16 @@
  npm i body-cors
  ```
 
-### Create a folder with your project name and create src folder inside your project folder
+3) Create a folder with your project name and create src folder inside your project folder
 
-### src should contain client folder and server folder
+4) src should contain client folder and server folder
 
-### Client folder should contain js folder,styles folder,views folder as well as index.js file
+5) Client folder should contain js folder,styles folder,views folder as well as index.js file
 
-### App.js file should go inside the js file,css file should go inside styles and index.html file into views
-### After doing the basic functionalities in all these files ,install webpack - npm i webpack webpack-cli
+6)  App.js file should go inside the js file,css file should go inside styles and index.html file into views
+7) After doing the basic functionalities in all these files ,install webpack 
+
+ ```   npm i webpack webpack-cli ```
 	 -add config file:webpack.config
 	-Add mecessary require statements and module.exports to config file
 	```Const path = require('path')
@@ -33,12 +35,12 @@
 	-Try running webpack - will show error
 	```	npm run build ```
 
-###  Add an index.js file in to the client directory
-   - Add the entry point attribute to webpack config
+8)  Add an index.js file in to the client directory and add the entry point attribute to webpack config
        ``` './src/client/index.js'  ```
 
 9)Build webpack
-10)Add babel to your repo - npm -i @babel/core @babel/preset-env babel-loader
+10)Add babel to your repo 
+``` npm -i @babel/core @babel/preset-env babel-loader ```
 11)create a .babelrc file and fill it with these settings
 	{'presets':['@babel/preset-env']}
 12)Add a loader to our webpack config	
