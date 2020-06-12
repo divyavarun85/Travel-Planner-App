@@ -98,8 +98,10 @@ plugins: [
 
 
 1)Install webapack dev server
+
 	```npm i -D webpack-dev-sever```
 2)Edit the build-dev npm script to use webpack-dev-server
+
 	```webpack-dev-server --config webpack.dev.js --open```
 
 ##### Sass Loader set up
