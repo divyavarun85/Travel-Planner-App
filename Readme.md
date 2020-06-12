@@ -1,40 +1,41 @@
 
-# Heading 1 Install NodeJS (windows)
+### Install NodeJS (windows)
 ```
- (<https://phoenixnap.com/kb/install-node-js-npm-on-windows)>
+ https://phoenixnap.com/kb/install-node-js-npm-on-windows
 
 ```
 
-# Heading 1  Install Express,body parser and cors
+###  Install Express,body parser and cors
 
- npm install express --save
+ ```npm install express --save
 
- ```npm i body-parser
+ npm i body-parser
 
  npm i body-cors
  ```
 
-# Heading 1 Create a folder with your project name and create src folder inside your project folder
+### Create a folder with your project name and create src folder inside your project folder
 
-# Heading 1 src should contain client folder and server folder
+### src should contain client folder and server folder
 
-# Heading 1 Client folder should contain js folder,styles folder,views folder as well as index.js file
+### Client folder should contain js folder,styles folder,views folder as well as index.js file
 
-5.App.js file should go inside the js file,css file should go inside styles and index.html file into views
-6.After doing the basic functionalities in all these files ,install webpack - npm i webpack webpack-cli
-	a)add config file:webpack.config
-	b)Add mecessary require statements and module.exports to config file
-		const path = require('path')
-		const webpack = require('webpack')
-		module.exports = {
-		}
-	c)Add a new webpack npm script to your package.json
-		"build":webpack"
-	d)Try running webpack - will show error
-		npm run build
-7)Add an index.js file in to the client directory
-8)Add the entry point attribute to webpack config
-'./src/client/index.js'
+### App.js file should go inside the js file,css file should go inside styles and index.html file into views
+### After doing the basic functionalities in all these files ,install webpack - npm i webpack webpack-cli
+	 -add config file:webpack.config
+	-Add mecessary require statements and module.exports to config file
+	```Const path = require('path')
+	-Const webpack = require('webpack')
+    -module.exports = {
+		}```
+	-Add a new webpack npm script to your package.json
+	```	"build":webpack"```
+	-Try running webpack - will show error
+	```	npm run build ```
+
+###  Add an index.js file in to the client directory
+   - Add the entry point attribute to webpack config
+       ``` './src/client/index.js'  ```
 
 9)Build webpack
 10)Add babel to your repo - npm -i @babel/core @babel/preset-env babel-loader
