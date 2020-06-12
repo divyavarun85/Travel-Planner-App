@@ -160,6 +160,7 @@ Make sure server is running on the given port.
 #### Setting up Jest fortesting purposes
 
 ```install npm i jest```
+
 Add the following section to your package.json:
 
 ```
