@@ -1,11 +1,11 @@
 
-### Install NodeJS (windows)
+1) Install NodeJS (windows)
 ```
  https://phoenixnap.com/kb/install-node-js-npm-on-windows
 
 ```
 
-###  Install Express,body parser and cors
+2)  Install Express,body parser and cors
 
  ```npm install express --save
 
