@@ -1,7 +1,9 @@
 
 1) Install NodeJS (windows)
 
-``` https://phoenixnap.com/kb/install-node-js-npm-on-windows```
+ [Refer here for installation](www.phoenixnap.com/kb/)
+ 
+ install-node-js-npm-on-windows
 
 
 2) Install Express,body parser and cors
