@@ -1,16 +1,24 @@
+import {Username,
+   GeonamesbaseURL,
+   WeatherbitCurrentweatherURL,
+   WeatherbitbaseURL,
+   WeatherbitAPI,
+   PixabaybaseURL,
+   PixabayAPI } from './apikey';
+
 var today = new Date();
 /**Geonames API credentials */
-let username ='divyavarun';
-let geonamesbaseURL ="http://api.geonames.org/searchJSON?";
+let username =Username;
+let geonamesbaseURL =GeonamesbaseURL;
 
 /**weatherbit API credentials */
-let weatherbitCurrentweatherURL ="http://api.weatherbit.io/v2.0/current";
-let weatherbitbaseURL ="http://api.weatherbit.io/v2.0/forecast/daily";
-let weatherbitAPI = '1192a6cfe0c3400eafe550b3a620c0ff';
+let weatherbitCurrentweatherURL =WeatherbitCurrentweatherURL;
+let weatherbitbaseURL =WeatherbitbaseURL;
+let weatherbitAPI = WeatherbitAPI;
 
 /**pixabay API credentials */
-let pixabaybaseURL = "https://pixabay.com/api/";
-let pixabayAPI = "16947604-4a7a0accc8b9117d01d2ecc60";
+let pixabaybaseURL = PixabaybaseURL;
+let pixabayAPI = PixabayAPI;
 
 /**Event handler for Generate button */
 document.addEventListener('DOMContentLoaded', function () {

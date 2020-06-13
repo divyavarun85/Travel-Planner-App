@@ -161,10 +161,16 @@ Add this code to the bottom of your html file, just above the closing body tag.
 Make sure server is running on the given port.
 
 -In app.js,write the aynch function to fetch the latitude and longitude of the city entered by user and siplay that in the home page(from geonames api).
+
 -Secondly,another async function to fetch datas(weather details) based on the flongitude and latitude and date entered by user(from weatherbit api).
+
 -Next,one more async function to fetch the image of the city from pixabay api and display in home page.
+
 -Finally a function to calculate the total trip days between trip -start date adn trip-end date.
 
+-Create a file named apikey.js in js folder and update all the api credentials there.Export  from there and Import in app.js and use it there.
+
+Include apikey.js in .gitignore file.
 #### Setting up Jest fortesting purposes
 
 ```install npm i jest```
