@@ -10,7 +10,7 @@
 
  ```npm i body-parser```
 
- ```npm i body-cors```
+ ```npm i cors```
 
 
 3) Create a folder with your project name and create src folder inside your project folder
